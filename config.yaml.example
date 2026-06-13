@@ -1,0 +1,23 @@
+# ================================================
+#  MedExamAgent 配置文件模板
+#  复制为 config.yaml 并填写真实信息后使用
+#  ⚠️  config.yaml 已被 .gitignore 忽略，请勿提交
+# ================================================
+
+# --- DeepSeek API 设置 ---
+deepseek:
+  # 在 https://platform.deepseek.com 申请 API Key
+  api_key: "your-deepseek-api-key-here"
+  # API 地址，通常无需修改
+  base_url: "https://api.deepseek.com"
+  # 模型选择: deepseek-chat (对话), deepseek-reasoner (推理)
+  model: "deepseek-chat"
+  # 生成温度 (0~1)，越低越严谨
+  temperature: 0.2
+
+# --- 输出设置 ---
+output:
+  # 输出格式: markdown 或 json
+  format: "markdown"
+  # 考点文件保存路径（仅命令行模式使用）
+  save_path: "./output"

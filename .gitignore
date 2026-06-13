@@ -1,0 +1,61 @@
+```gitignore
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# --- 虚拟环境 ---
+venv/
+env/
+.venv/
+.env
+
+# --- 密钥与配置 (注意：永远不要提交真实 Key) ---
+config.yaml
+*.key
+*.pem
+credentials.json
+secrets.yaml
+
+# --- 输入/输出示例 & 临时文件 ---
+output/
+*.tmp
+*.log
+logs/
+*.swp
+
+# --- 操作系统 ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- IDE & 编辑器 ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+*.iml
+
+# --- Jupyter Notebook ---
+.ipynb_checkpoints/
+*.ipynb
+
+# --- 项目特定 ---
+# 如果你使用本地生成的考点文件，也可以忽略整个输出目录
+# output/
+
+# 允许保留示例文件，但忽略任何可能存在个人数据的输入文件
+# examples/ 中的 sample 文件可以提交
+```
+
+### 使用说明
+- **真实 `config.yaml`** 已被忽略，仓库中只需提供 `config.yaml.example` 作为模板。
+- 如需保留某些日志或输出文件夹，可在 `.gitignore` 中添加 `output/`。
+- 如果你在 `examples/` 中放了真实教材文件，请手动确认它们不含版权内容或敏感信息。
