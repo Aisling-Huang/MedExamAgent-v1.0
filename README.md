@@ -62,12 +62,12 @@ pip install -r requirements.txt
   ./start.sh
   ```
 
-脚本会自动启动后端 API 和前端页面，并打开浏览器访问 `http://localhost:3000/app.html`。
+脚本会自动启动后端 API 和前端页面，并打开浏览器访问 `http://localhost:3000/preview.html`。
 
 > 手动启动：  
 > 终端1：`uvicorn api:app --host 127.0.0.1 --port 8000`  
 > 终端2：`python3 -m http.server 3000 --bind 127.0.0.1`  
-> 然后访问 `http://localhost:3000/app.html`
+> 然后访问 `http://localhost:3000/preview.html`
 
 ---
 

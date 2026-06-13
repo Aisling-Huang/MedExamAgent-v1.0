@@ -15,27 +15,31 @@ if ! python3 -c "import fastapi" &> /dev/null; then
     pip install -r requirements.txt
 fi
 
-# 启动后端（默认监听 127.0.0.1，如需局域网访问请改为 0.0.0.0）
+# 启动后端（默认监听 127.0.0.1）
 echo "🔧 启动后端 (http://127.0.0.1:8000)..."
 python3 -m uvicorn api:app --host 127.0.0.1 --port 8000 &
 BACKEND_PID=$!
 
 sleep 2
 
-# 启动前端（同样默认监听 127.0.0.1）
+# 启动前端
 echo "🌐 启动前端 (http://127.0.0.1:3000)..."
 python3 -m http.server 3000 --bind 127.0.0.1 &
 FRONTEND_PID=$!
 
 echo ""
 echo "✅ 启动成功！"
-echo "   本地访问: http://localhost:3000/app.html"
+echo "   封面入口: http://localhost:3000/preview.html"
 echo ""
 echo "按 Ctrl+C 停止所有服务"
 
-# 打开浏览器（可选）
-if command -v open &> /dev/null; then
-    open http://localhost:3000/app.html
+# 自动打开浏览器（优先 xdg-open，其次 open）
+if command -v xdg-open &> /dev/null; then
+    xdg-open http://localhost:3000/preview.html
+elif command -v open &> /dev/null; then
+    open http://localhost:3000/preview.html
+else
+    echo "无法自动打开浏览器，请手动访问上述地址"
 fi
 
 wait $BACKEND_PID $FRONTEND_PID

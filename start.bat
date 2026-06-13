@@ -16,21 +16,46 @@ if %ERRORLEVEL% NEQ 0 (
     pip install -r requirements.txt
 )
 
-REM 启动后端（默认 127.0.0.1）
 echo 🔧 启动后端 (http://127.0.0.1:8000)...
 start "MedExamAgent-Backend" python -m uvicorn api:app --host 127.0.0.1 --port 8000
 
 timeout /t 3 /nobreak >nul
 
-REM 启动前端（默认 127.0.0.1）
 echo 🌐 启动前端 (http://127.0.0.1:3000)...
 start "MedExamAgent-Frontend" python -m http.server 3000 --bind 127.0.0.1
 
 echo.
 echo ✅ 启动成功！
-echo    本地访问: http://localhost:3000/app.html
+echo    封面入口: http://localhost:3000/preview.html
 echo.
-echo 如需从手机或其他设备访问，请修改脚本中的 127.0.0.1 为 0.0.0.0
-pause
 
-start http://localhost:3000/app.html
+:: 尝试多种方式打开浏览器
+set "URL=http://localhost:3000/preview.html"
+
+:: 方法1：explorer（通常有效）
+explorer "%URL%" 2>nul
+if %ERRORLEVEL% EQU 0 goto :done
+
+:: 方法2：start 直接打开默认浏览器
+start "" "%URL%" 2>nul
+if %ERRORLEVEL% EQU 0 goto :done
+
+:: 方法3：指定 Chrome 路径（如果存在）
+if exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
+    start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" "%URL%"
+    goto :done
+)
+
+:: 方法4：指定 Edge 路径（Windows 10/11 自带）
+if exist "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" (
+    start "" "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" "%URL%"
+    goto :done
+)
+
+:: 全部失败，提示手动打开
+echo ⚠️  无法自动打开浏览器，请手动访问上述地址。
+goto :eof
+
+:done
+echo 🌐 浏览器正在打开封面页面...
+pause
