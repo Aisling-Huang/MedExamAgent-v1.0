@@ -30,7 +30,7 @@
 
 ### 2. 克隆项目
 ```bash
-git clone https://github.com/你的用户名/MedExamAgent.git
+git clone https://github.com/Aisling-Huang/MedExamAgent-v1.0.git
 cd MedExamAgent
 ```
 
