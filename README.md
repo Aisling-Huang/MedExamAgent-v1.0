@@ -3,6 +3,10 @@
 **AI 驱动的医学复习考点生成器**  
 上传课程 PPT 和教材 PDF，自动提炼 **选择题、名词解释、大题、临床案例分析** 等结构化考点，帮你高效备考。
 
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![DeepSeek](https://img.shields.io/badge/AI-DeepSeek-purple.svg)](https://platform.deepseek.com)
+
 ---
 
 ## ✨ 核心特性
@@ -10,7 +14,7 @@
 - **多格式支持**：PPT 和 PDF 讲义均可上传，每个文件视为一个独立章节。
 - **智能章节匹配**：自动通过教材书签 → 文字章节标题 → TF‑IDF 语义匹配，将讲义精准对应到教材段落。
 - **五板块考点输出**：
-  1. 📋 **知识框架**（基于 PPT 的层级梳理，结合执业医师等真题考点，标注重点难点）
+  1. 📋 **知识框架**（基于 PPT 的层级梳理，标注重点难点）
   2. 📝 **考点复现**（选择题、名词解释、简答论述答题要点）
   3. 🏥 **案例分析**（AI 自编典型病例，含诊断思路和思考题）
   4. 🧠 **能力拓展**（临床思维、常见误区、真题切入点）
@@ -29,13 +33,19 @@
 - 稳定的网络连接（用于访问 DeepSeek API）
 
 ### 2. 克隆项目
+
 ```bash
+# SSH（推荐）
+git clone git@github.com:Aisling-Huang/MedExamAgent-v1.0.git
+
+# 或 HTTPS
 git clone https://github.com/Aisling-Huang/MedExamAgent-v1.0.git
-cd MedExamAgent
+
 ```
 
-### 3. 安装依赖
+### 3. 进入目录并安装依赖
 ```bash
+cd MedExamAgent-v1.0
 pip install -r requirements.txt
 ```
 
@@ -46,11 +56,15 @@ pip install -r requirements.txt
 ### 5. 启动程序
 
 - **Windows**：双击 `start.bat`
-- **macOS / Linux**：在终端执行 `chmod +x start.sh && ./start.sh`
+- **macOS / Linux**：
+  ```bash
+  chmod +x start.sh
+  ./start.sh
+  ```
 
 脚本会自动启动后端 API 和前端页面，并打开浏览器访问 `http://localhost:3000/app.html`。
 
-> 如果你需要手动启动：  
+> 手动启动：  
 > 终端1：`uvicorn api:app --host 127.0.0.1 --port 8000`  
 > 终端2：`python3 -m http.server 3000 --bind 127.0.0.1`  
 > 然后访问 `http://localhost:3000/app.html`
